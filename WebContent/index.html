@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheet for Google Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Google Font Root Link -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Jquery Link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <title>IWe | Question Paper Generator</title>
+    <style>
+        /* Styles for Navbar */
+        .bg-light {
+            background-color: #ffffff!important;
+            box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+        }
+        .nav_bar_title {
+            font-size: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .nav_bar_title {
+                font-size: 20px;
+            }
+        }
+
+        .login_button {
+            background-color: #7e57c2;
+            padding: 10px;
+            color: white;
+            border-radius: 5px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .starter-template {
+        padding: 3rem 1.5rem;
+        text-align: center;
+    }
+
+        .typewriter h1 {
+            overflow: hidden;
+            white-space: nowrap;
+            /* margin: 0 auto; */
+            animation: 
+            typing 3.5s steps(40, end);
+        }
+
+        /* The typing effect */
+        @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+        }
+    </style>        
+</head>
+<body>
+    <nav class="navbar sticky-top navbar-light bg-light" style="padding: 18px;">
+        <div class="navbar-brand">
+            <span style="font-weight: 500; font-family: 'Cabin', sans-serif; display: flex; color: #3c4043;" class="nav_bar_title">
+                IWe - Make Task Easy
+            </span>
+        </div>
+        <div>
+            <a href="login.html" style="color: white; text-decoration: none;" class="login_button"><b>Faculty Login</b></a>
+            <a href="adminlogin.html" style="color: white; text-decoration: none;" class="login_button"><b>Admin Login</b></a>
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+        <div class="starter-template">
+          <h1 class="typewrite">Welcome To
+            <span class="typewrite" style="color: #000; text-decoration: none;" data-period="2000" data-type='[ "Automatic Question Paper Framer!" ]'>
+                <span class="wrap"></span>
+            </span>
+          </h1>
+        </div>
+    </main>
+
+    <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-interval="2000">
+            <img src="cimg1.jpg" alt="Carosel_image1" class="d-block w-100">
+          </div>
+          <div class="carousel-item" data-interval="2000">
+            <img src="cimg2.png" alt="Carosel_image2" class="d-block w-100">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script>
+    var TxtType = function(el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+    
+        TxtType.prototype.tick = function() {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+    
+            if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+    
+            this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+    
+            var that = this;
+            var delta = 200 - Math.random() * 100;
+    
+            if (this.isDeleting) { delta /= 2; }
+    
+            if (!this.isDeleting && this.txt === fullTxt) {
+            delta = this.period;
+            this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.loopNum++;
+            delta = 500;
+            }
+    
+            setTimeout(function() {
+            that.tick();
+            }, delta);
+        };
+    
+        window.onload = function() {
+            var elements = document.getElementsByClassName('typewrite');
+            for (var i=0; i<elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-type');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                    new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+            document.body.appendChild(css);
+        };
+    </script>
+</body>
+</html>
